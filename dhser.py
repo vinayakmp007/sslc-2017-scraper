@@ -22,12 +22,35 @@ def fun(url,nm):
 
 
 try:
-    db=MySQLdb.connect("localhost","","","")  # enter hostname, username ,password, and database name of the sql server
+    db=MySQLdb.connect("localhost","","","")  #hostname, username ,password, and database name of the sql server
     cur=db.cursor()
     print ("cursor created")
 
     for num in range(100001,602612):
-        url='http://www.results.itschool.gov.in/itScHoolLreSultzzss/itScHoolLreSultzzsszxsslc_1/'+str(num)+'.txt?regno='+str(num)
+
+        if num>=100001 and num<=150000:
+            fl=1;
+        elif num>=150001 and num<=200000:
+            fl=2;
+        elif num>=200001 and num<=250000:
+            fl=3;
+        elif num>=250001 and num<=300000:
+            fl=4;
+        elif num>=300001 and num<=350000:
+            fl=5;
+        elif num>=350001 and num<=400000:
+            fl=6;
+        elif num>=400001 and num<=450000:
+            fl=7;
+        elif num>=450001 and num<=500000:
+            fl=8;
+        elif num>=500001 and num<=550000:
+            fl=9;
+        elif num>=550001 and num<=600000:
+            fl=10;
+        elif num>=600001 and num<=602611:
+            fl=11;
+        url='http://www.results.itschool.gov.in/itScHoolLreSultzzss/itScHoolLreSultzzsszxsslc_'+str(fl)+'/'+str(num)+'.txt?regno='+str(num)
         print(url)
         n=50                                    #no of retries
         while n:
@@ -73,7 +96,7 @@ try:
             db.commit()
 
 except :
-    print(cur._last_executed)
+#    print(cur._last_executed)
     print("Unknown Error")
     print(sys.exc_info()[0])
     traceback.print_exc()
